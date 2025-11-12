@@ -58,3 +58,5 @@ export const ShoeData: Product[] = [
     fit: "True to Size",
   },
 ];
+
+export const BannerImage = ["/assets/shoe-1.jpg"];

@@ -58,3 +58,5 @@ export const TrouserData: Product[] = [
     fit: "Classic Fit",
   },
 ];
+
+export const BannerImage = ["/assets/trouser-1.jpg"];

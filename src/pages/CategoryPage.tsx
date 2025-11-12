@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { ShirtData } from "@/data/ShirtData";
-import { TshirtData } from "@/data/TshirtData";
-import { TrouserData } from "@/data/TrouserData";
-import { ShoeData } from "@/data/ShoeData";
-import { JeanData } from "@/data/JeanData";
-import { BlazerData } from "@/data/BlazerData";
-import { WinterData } from "@/data/WinterData";
+import { ShirtData, BannerImage as ShirtBannerImage } from "@/data/ShirtData";
+import { TshirtData, BannerImage as TshirtBannerImage } from "@/data/TshirtData";
+import { TrouserData, BannerImage as TrouserBannerImage } from "@/data/TrouserData";
+import { ShoeData, BannerImage as ShoeBannerImage } from "@/data/ShoeData";
+import { JeanData, BannerImage as JeanBannerImage } from "@/data/JeanData";
+import { BlazerData, BannerImage as BlazerBannerImage } from "@/data/BlazerData";
+import { WinterData, BannerImage as WinterBannerImage } from "@/data/WinterData";
 import ProductCard from "@/components/ProductCard";
 
 const CategoryPage = () => {
@@ -35,6 +35,27 @@ const CategoryPage = () => {
   const products = getProducts();
   const categoryName = category?.charAt(0).toUpperCase() + category?.slice(1);
 
+  const getBannerImage = () => {
+    switch (category) {
+      case "shirts":
+        return ShirtBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      case "tshirts":
+        return TshirtBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      case "trousers":
+        return TrouserBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      case "shoes":
+        return ShoeBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      case "jeans":
+        return JeanBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      case "blazers":
+        return BlazerBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      case "winter":
+        return WinterBannerImage?.[0] ?? "/assets/hero-banner.jpg";
+      default:
+        return "/assets/hero-banner.jpg";
+    }
+  };
+
   const getCategoryDescription = () => {
     switch (category) {
       case "shirts":
@@ -59,9 +80,11 @@ const CategoryPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Category Banner */}
-      <section className="relative h-[40vh] flex items-center justify-center bg-muted">
-        
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40" />
+      <section
+        className="relative h-[40vh] flex items-center justify-center bg-muted bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${getBannerImage()})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative z-10 text-center px-4">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
             {categoryName}

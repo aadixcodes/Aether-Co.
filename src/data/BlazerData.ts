@@ -58,3 +58,5 @@ export const BlazerData: Product[] = [
     fit: "Relaxed Fit",
   },
 ];
+
+export const BannerImage = ["/assets/blazer-1.jpg"];

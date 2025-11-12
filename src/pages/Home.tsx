@@ -1,10 +1,13 @@
-import { AllProducts } from "@/data/AllProducts";
 import ProductCard from "@/components/ProductCard";
 import { Link } from "react-router-dom";
 import heroBanner from "/assets/hero-banner.jpg";
-import promoShirts from "/assets/promo-shirts.jpg";
-import promoNewArrivals from "/assets/promo-new-arrivals.jpg";
-import promoWinter from "/assets/promo-winter.jpg";
+import { WinterData, BannerImage as WinterBannerImage } from "@/data/WinterData";
+import { ShirtData, BannerImage as ShirtBannerImage } from "@/data/ShirtData";
+import { TshirtData, BannerImage as TshirtBannerImage } from "@/data/TshirtData";
+import { TrouserData, BannerImage as TrouserBannerImage } from "@/data/TrouserData";
+import { ShoeData, BannerImage as ShoeBannerImage } from "@/data/ShoeData";
+import { JeanData, BannerImage as JeanBannerImage } from "@/data/JeanData";
+import { BlazerData, BannerImage as BlazerBannerImage } from "@/data/BlazerData";
 
 const Home = () => {
   const categories = [
@@ -15,6 +18,65 @@ const Home = () => {
     { name: "Jeans", path: "/jeans", count: 4 },
     { name: "Blazers", path: "/blazers", count: 4 },
     { name: "Winter", path: "/winter", count: 4 },
+  ];
+
+  const sections = [
+    {
+      key: "winter",
+      title: "Winter Collection",
+      subtitle: "Embrace the Cold in Style",
+      path: "/winter",
+      banner: WinterBannerImage?.[0] ?? "/assets/promo-winter.jpg",
+      products: WinterData,
+    },
+    {
+      key: "shirts",
+      title: "Premium Shirts",
+      subtitle: "Timeless Elegance",
+      path: "/shirts",
+      banner: ShirtBannerImage?.[0] ?? "/assets/promo-shirts.jpg",
+      products: ShirtData,
+    },
+    {
+      key: "tshirts",
+      title: "T-Shirts",
+      subtitle: "Comfort for Everyday",
+      path: "/tshirts",
+      banner: TshirtBannerImage?.[0] ?? "/assets/tshirt-1.jpg",
+      products: TshirtData,
+    },
+    {
+      key: "trousers",
+      title: "Trousers",
+      subtitle: "Tailored and Versatile",
+      path: "/trousers",
+      banner: TrouserBannerImage?.[0] ?? "/assets/trouser-1.jpg",
+      products: TrouserData,
+    },
+    {
+      key: "shoes",
+      title: "Shoes",
+      subtitle: "Step into Luxury",
+      path: "/shoes",
+      banner: ShoeBannerImage?.[0] ?? "/assets/shoe-1.jpg",
+      products: ShoeData,
+    },
+    {
+      key: "jeans",
+      title: "Jeans",
+      subtitle: "Denim Classics",
+      path: "/jeans",
+      banner: JeanBannerImage?.[0] ?? "/assets/jean-1.jpg",
+      products: JeanData,
+    },
+    {
+      key: "blazers",
+      title: "Blazers",
+      subtitle: "Power Dressing",
+      path: "/blazers",
+      banner: BlazerBannerImage?.[0] ?? "/assets/blazer-1.jpg",
+      products: BlazerData,
+    },
   ];
 
   return (
@@ -66,77 +128,39 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Promotional Banner 1 - Winter */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link to="/winter" className="block relative h-64 md:h-96 overflow-hidden group">
-          <img 
-            src={promoWinter} 
-            alt="Winter Collection - Premium Coats and Jackets" 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h3 className="text-3xl md:text-5xl font-bold mb-2">Winter Collection</h3>
-              <p className="text-lg md:text-xl mb-4">Embrace the Cold in Style</p>
-              <span className="inline-block bg-white text-black px-6 py-2 text-sm font-medium hover:bg-white/90 transition-colors">
-                Shop Winter
-              </span>
-            </div>
-          </div>
-        </Link>
-      </section>
+      {sections.map((section) => (
+        <div key={section.key}>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <Link to={section.path} className="block relative h-64 md:h-96 overflow-hidden group">
+              <img
+                src={section.banner}
+                alt={section.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h3 className="text-3xl md:text-5xl font-bold mb-2">{section.title}</h3>
+                  <p className="text-lg md:text-xl mb-4">{section.subtitle}</p>
+                  <span className="inline-block bg-white text-black px-6 py-2 text-sm font-medium hover:bg-white/90 transition-colors">
+                    Shop {section.title.split(" ")[0]}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </section>
 
-      {/* Promotional Banner 2 - Shirts */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link to="/shirts" className="block relative h-64 md:h-96 overflow-hidden group">
-          <img 
-            src={promoShirts} 
-            alt="Premium Shirts Collection" 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h3 className="text-3xl md:text-5xl font-bold mb-2">Premium Shirts</h3>
-              <p className="text-lg md:text-xl">Timeless Elegance</p>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h2 className="text-3xl font-bold text-foreground mb-8">
+              {section.title}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {section.products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
-          </div>
-        </Link>
-      </section>
-
-      {/* Featured Products */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-          All Products
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AllProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          </section>
         </div>
-      </section>
-
-      {/* Promotional Banner 3 - New Arrivals */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="relative h-64 md:h-96 overflow-hidden group">
-          <img 
-            src={promoNewArrivals} 
-            alt="New Arrivals" 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h3 className="text-3xl md:text-5xl font-bold mb-2">New Arrivals</h3>
-              <p className="text-lg md:text-xl mb-4">Discover the Latest Collection</p>
-              <Link
-                to="/shirts"
-                className="inline-block bg-white text-black px-6 py-2 text-sm font-medium hover:bg-white/90 transition-colors"
-              >
-                Explore Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      ))}
 
       {/* Features Section */}
       <section className="bg-muted py-16 mt-16">
