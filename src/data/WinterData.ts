@@ -1,7 +1,7 @@
-import winter1 from "@/assets/winter-1.jpg";
-import winter2 from "@/assets/winter-2.jpg";
-import winter3 from "@/assets/winter-3.jpg";
-import winter4 from "@/assets/winter-4.jpg";
+import winter1 from "/assets/winter-1.jpg";
+import winter2 from "/assets/winter-2.jpg";
+import winter3 from "/assets/winter-3.jpg";
+import winter4 from "/assets/winter-4.jpg";
 
 export const WinterData = [
   {

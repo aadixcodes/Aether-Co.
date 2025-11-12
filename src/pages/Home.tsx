@@ -1,10 +1,10 @@
 import { AllProducts } from "@/data/AllProducts";
 import ProductCard from "@/components/ProductCard";
 import { Link } from "react-router-dom";
-import heroBanner from "@/assets/hero-banner.jpg";
-import promoShirts from "@/assets/promo-shirts.jpg";
-import promoNewArrivals from "@/assets/promo-new-arrivals.jpg";
-import promoWinter from "@/assets/promo-winter.jpg";
+import heroBanner from "/assets/hero-banner.jpg";
+import promoShirts from "/assets/promo-shirts.jpg";
+import promoNewArrivals from "/assets/promo-new-arrivals.jpg";
+import promoWinter from "/assets/promo-winter.jpg";
 
 const Home = () => {
   const categories = [
@@ -48,7 +48,7 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
           {categories.map((category) => (
             <Link
               key={category.path}
@@ -108,7 +108,7 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
           All Products
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {AllProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
